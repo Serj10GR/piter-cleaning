@@ -3,10 +3,21 @@ import { createStyles, Header, Group, ActionIcon, Container, Burger } from '@man
 import { useDisclosure } from '@mantine/hooks';
 import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram } from '@tabler/icons';
 import { MantineLogo } from '@mantine/ds';
+import Image from 'next/image';
 
 const useStyles = createStyles((theme) => ({
+  mobile: {
+    position: 'absolute',
+    right: 0,
+    top: 56,
+    left: 0,
+    bottom: 0,
+    background: 'red',
+    zIndex: 10,
+  },
   outer: {
     background: theme.colors.brand[0],
+    borderBottom: 0,
   },
   inner: {
     display: 'flex',
@@ -91,26 +102,21 @@ export function MainHeader({ links }: HeaderMiddleProps) {
   ));
 
   return (
-    <Header className={classes.outer} height={56} mb={120}>
+    <Header className={classes.outer} height={56}>
+      {opened && (
+        <Container className={classes.mobile}>
+          <Group spacing={5}>
+          {items}
+          </Group>
+        </Container>
+      )}
       <Container className={classes.inner}>
         <Burger opened={opened} onClick={toggle} size="sm" className={classes.burger} />
         <Group className={classes.links} spacing={5}>
           {items}
         </Group>
 
-        <MantineLogo size={28} />
-
-        <Group spacing={0} className={classes.social} position="right" noWrap>
-          <ActionIcon size="lg">
-            <IconBrandTwitter size={18} stroke={1.5} />
-          </ActionIcon>
-          <ActionIcon size="lg">
-            <IconBrandYoutube size={18} stroke={1.5} />
-          </ActionIcon>
-          <ActionIcon size="lg">
-            <IconBrandInstagram size={18} stroke={1.5} />
-          </ActionIcon>
-        </Group>
+        <Image alt='zmeu' src='/images/logo-black.svg' width={200} height={30} />
       </Container>
     </Header>
   );
