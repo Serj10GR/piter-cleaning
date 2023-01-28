@@ -7,15 +7,18 @@ import {
   createStyles,
 } from "@mantine/core";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const useStyles = createStyles((theme) => ({
+  image: {
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  },
   wrapper: {
     position: "relative",
     paddingTop: 180,
     paddingBottom: 130,
-    backgroundImage: 'url("/images/hero.jpg")',
-    backgroundSize: "cover",
-    backgroundPosition: "center",
+    minHeight: "calc(100vh - 56px)",
 
     "@media (max-width: 520px)": {
       paddingTop: 80,
@@ -89,6 +92,13 @@ export function HeroComponent() {
 
   return (
     <div className={classes.wrapper}>
+      <Image
+        priority
+        fill
+        className={classes.image}
+        src="/images/hero.jpg"
+        alt="Zmeu hausbesorger hero image"
+      />
       <Overlay color="#000" opacity={0.65} zIndex={1} />
 
       <div className={classes.inner}>

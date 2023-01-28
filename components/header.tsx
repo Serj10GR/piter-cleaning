@@ -178,6 +178,7 @@ export function MainHeader({ links }: HeaderMiddleProps) {
       )}
       <Container className={classes.inner}>
         <Burger
+          area-label="menu"
           opened={opened}
           onClick={toggle}
           size="sm"
@@ -185,7 +186,7 @@ export function MainHeader({ links }: HeaderMiddleProps) {
         />
         <Link href="/">
           <Image
-            alt="zmeu"
+            alt="zmeu hausbesorger logo"
             src="/images/logo-black.svg"
             width={200}
             height={30}
