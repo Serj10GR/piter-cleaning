@@ -1,16 +1,14 @@
-import Head from "next/head";
 import { Layout } from "../components/layout";
+import { Meta } from "../components/meta";
 import { Features } from "../components/services";
 
 export default function ServicesPage() {
   return (
     <>
-      <Head>
-        <title>Dienstleistungen: Zmeu Hausbesorger</title>
-        <meta name="description" content="Handwerker Zmeu Petru" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Meta
+        title="Dienstleistungen: Zmeu Hausbesorger"
+        description="Dienstleistungen: Zmeu Hausbesorger"
+      />
       <Layout>
         <Features
           data={[

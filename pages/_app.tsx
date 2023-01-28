@@ -10,10 +10,8 @@ export default function App({ Component, pageProps }: AppProps) {
         /** Put your mantine theme override here */
         colorScheme: "light",
         colors: {
-          brand: [
-            "#80C936",
-          ]
-        }
+          brand: ["#80C936", "0C3D33"],
+        },
       }}
     >
       <Component {...pageProps} />

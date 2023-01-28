@@ -77,24 +77,8 @@ const useStyles = createStyles((theme) => ({
     fontSize: theme.fontSizes.md,
     backgroundColor: theme.colors.brand[0],
 
-    "&:not(:first-of-type)": {
-      marginLeft: theme.spacing.md,
-    },
-
-    "@media (max-width: 520px)": {
-      "&:not(:first-of-type)": {
-        marginTop: theme.spacing.md,
-        marginLeft: 0,
-      },
-    },
-  },
-
-  secondaryControl: {
-    color: theme.white,
-    backgroundColor: "rgba(255, 255, 255, .4)",
-
     "&:hover": {
-      backgroundColor: "rgba(255, 255, 255, .45) !important",
+      backgroundColor: `${theme.colors.brand[1]} !important`,
     },
   },
 }));
@@ -117,11 +101,11 @@ export function HeroComponent() {
 
         <Container>
           <Text size="lg" className={classes.description}>
-            Wie sind ein neuses Unternehmen auf dem Arbeitsmarkt in Ostereich,
+            Wir sind ein neues Unternehmen auf dem Arbeitsmarkt in Österreich,
             jetzt suchen wir Kunden und bieten ihnen gerne unsere
-            Dienstleistungen an, die ein breits Spektrum umfassen. Wir setzen
-            uns gerne min ihen in Verbindung, um das Leben zu elnem
-            vorteilhaften Preis komfortabler und sauberer zu gastalten.
+            Dienstleistungen an, die ein breites Spektrum umfassen. Wir setzen
+            uns gerne mit ihnen in Verbindung, um das Leben zu einem
+            vorteilhaften Preis komfortabler und sauberer zu gestalten.
           </Text>
         </Container>
 
