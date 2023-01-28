@@ -14,12 +14,12 @@ export default function ServicesPage() {
           data={[
             {
               image: "/images/feature-1.svg",
-              title: "Handwerker",
+              title: "REINIGUNG UND PFLEGE VON INNEN UND AUSSEN BEREICH",
               description: "Wir sind Handwerker",
             },
             {
               image: "/images/feature-1.svg",
-              title: "Handwerker",
+              title: "HAUSTECHNIK TÄTIGKEITEN UND KONTROLLEN",
               description: "Wir sind Handwerker",
             },
             {
@@ -44,7 +44,7 @@ export default function ServicesPage() {
             },
           ]}
           description="Wir sind Handwerker"
-          supTitle="Handwerker"
+          supTitle="Hausbesorger"
         />
       </Layout>
     </>
