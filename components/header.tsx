@@ -1,79 +1,131 @@
-import { useState } from 'react';
-import { createStyles, Header, Group, ActionIcon, Container, Burger } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
-import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram } from '@tabler/icons';
-import { MantineLogo } from '@mantine/ds';
-import Image from 'next/image';
+import { createStyles, Header, Group, Container, Burger } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
+import { IconBrandGmail, IconPhone } from "@tabler/icons";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const useStyles = createStyles((theme) => ({
   mobile: {
-    position: 'absolute',
+    position: "absolute",
     right: 0,
     top: 56,
     left: 0,
     bottom: 0,
-    background: 'red',
+    background: "white",
     zIndex: 10,
+    padding: 0,
+  },
+  mobileContactWrapper: {
+    justifyContent: "center",
+    marginTop: theme.spacing.xl,
+  },
+  mobileLinks: {
+    flexDirection: "column",
+    paddingTop: theme.spacing.xl,
+    gap: 0,
   },
   outer: {
     background: theme.colors.brand[0],
     borderBottom: 0,
   },
   inner: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
     height: 56,
 
-    [theme.fn.smallerThan('sm')]: {
-      justifyContent: 'flex-start',
+    [theme.fn.smallerThan("sm")]: {
+      justifyContent: "flex-start",
     },
   },
 
   links: {
     width: 260,
 
-    [theme.fn.smallerThan('sm')]: {
-      display: 'none',
+    [theme.fn.smallerThan("sm")]: {
+      display: "none",
     },
   },
 
-  social: {
-    width: 260,
+  contactLinks: {
+    gap: 0,
+    textAlign: "center",
+    fontSize: theme.fontSizes.sm,
+    flexDirection: "column",
 
-    [theme.fn.smallerThan('sm')]: {
-      width: 'auto',
-      marginLeft: 'auto',
+    [theme.fn.smallerThan("sm")]: {
+      display: "none",
     },
+  },
+
+  constactLink: {
+    color:
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[0]
+        : theme.colors.gray[7],
+    paddingLeft: 5,
+  },
+  contactLinkWrapper: {
+    display: "flex",
+    alignItems: "center",
   },
 
   burger: {
     marginRight: theme.spacing.md,
 
-    [theme.fn.largerThan('sm')]: {
-      display: 'none',
+    [theme.fn.largerThan("sm")]: {
+      display: "none",
     },
   },
 
   link: {
-    display: 'block',
+    display: "block",
     lineHeight: 1,
-    padding: '8px 12px',
+    padding: "8px 12px",
     borderRadius: theme.radius.sm,
-    textDecoration: 'none',
-    color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
+    textDecoration: "none",
+    color:
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[0]
+        : theme.colors.gray[7],
     fontSize: theme.fontSizes.sm,
     fontWeight: 500,
 
-    '&:hover': {
-      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
+    "&:hover": {
+      backgroundColor:
+        theme.colorScheme === "dark"
+          ? theme.colors.dark[6]
+          : theme.colors.gray[0],
+    },
+
+    [theme.fn.smallerThan("sm")]: {
+      borderTop: `1px solid ${theme.colors.brand[0]}`,
+      display: "inline-block",
+      width: "100%",
+      textAlign: "center",
+      padding: theme.spacing.md,
+      borderRadius: 0,
+      textTransform: "uppercase",
+
+      "&:hover": {
+        backgroundColor: theme.colors.brand[0],
+      },
+
+      "&:last-of-type": {
+        borderBottom: `1px solid ${theme.colors.brand[0]}`,
+      },
     },
   },
 
   linkActive: {
-    '&, &:hover': {
-      backgroundColor: theme.fn.variant({ variant: 'light', color: theme.primaryColor }).background,
-      color: theme.fn.variant({ variant: 'light', color: theme.primaryColor }).color,
+    "&, &:hover": {
+      backgroundColor: theme.fn.variant({
+        variant: "light",
+        color: theme.primaryColor,
+      }).background,
+      color: theme.fn.variant({ variant: "light", color: theme.primaryColor })
+        .color,
     },
   },
 }));
@@ -84,39 +136,81 @@ interface HeaderMiddleProps {
 
 export function MainHeader({ links }: HeaderMiddleProps) {
   const [opened, { toggle }] = useDisclosure(false);
-  const [active, setActive] = useState(links[0].link);
   const { classes, cx } = useStyles();
 
+  const path = usePathname();
+
   const items = links.map((link) => (
-    <a
+    <Link
       key={link.label}
       href={link.link}
-      className={cx(classes.link, { [classes.linkActive]: active === link.link })}
-      onClick={(event) => {
-        event.preventDefault();
-        setActive(link.link);
-      }}
+      className={cx(classes.link, {
+        [classes.linkActive]: path === link.link,
+      })}
     >
       {link.label}
-    </a>
+    </Link>
   ));
 
   return (
     <Header className={classes.outer} height={56}>
       {opened && (
         <Container className={classes.mobile}>
-          <Group spacing={5}>
-          {items}
+          <Group className={classes.mobileLinks}>{items}</Group>
+          <Group className={classes.mobileContactWrapper}>
+            <div className={classes.contactLinkWrapper}>
+              <IconBrandGmail size={15} />
+              <a
+                className={classes.constactLink}
+                href="mailto:service@hausbesorger.net"
+              >
+                service@hausbesorger.net
+              </a>
+            </div>
+            <div className={classes.contactLinkWrapper}>
+              <IconPhone size={15} />
+              <a className={classes.constactLink} href="tel:+4367762853634">
+                +43(0) 6776 285 3634
+              </a>
+            </div>
           </Group>
         </Container>
       )}
       <Container className={classes.inner}>
-        <Burger opened={opened} onClick={toggle} size="sm" className={classes.burger} />
+        <Burger
+          opened={opened}
+          onClick={toggle}
+          size="sm"
+          className={classes.burger}
+        />
+        <Link href="/">
+          <Image
+            alt="zmeu"
+            src="/images/logo-black.svg"
+            width={200}
+            height={30}
+          />
+        </Link>
+        <Group className={classes.contactLinks}>
+          <div className={classes.contactLinkWrapper}>
+            <IconBrandGmail size={15} />
+            <a
+              className={classes.constactLink}
+              href="mailto:service@hausbesorger.net"
+            >
+              service@hausbesorger.net
+            </a>
+          </div>
+          <div className={classes.contactLinkWrapper}>
+            <IconPhone size={15} />
+            <a className={classes.constactLink} href="tel:+4367762853634">
+              +43(0) 6776 285 3634
+            </a>
+          </div>
+        </Group>
         <Group className={classes.links} spacing={5}>
           {items}
         </Group>
-
-        <Image alt='zmeu' src='/images/logo-black.svg' width={200} height={30} />
       </Container>
     </Header>
   );
