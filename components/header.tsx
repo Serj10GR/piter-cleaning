@@ -3,7 +3,7 @@ import { useDisclosure } from "@mantine/hooks";
 import { IconBrandGmail, IconPhone } from "@tabler/icons";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 
 const useStyles = createStyles((theme) => ({
   mobile: {
@@ -138,14 +138,14 @@ export function MainHeader({ links }: HeaderMiddleProps) {
   const [opened, { toggle }] = useDisclosure(false);
   const { classes, cx } = useStyles();
 
-  const path = usePathname();
+  const router = useRouter();
 
   const items = links.map((link) => (
     <Link
       key={link.label}
       href={link.link}
       className={cx(classes.link, {
-        [classes.linkActive]: path === link.link,
+        [classes.linkActive]: router.pathname === link.link,
       })}
     >
       {link.label}
@@ -186,10 +186,10 @@ export function MainHeader({ links }: HeaderMiddleProps) {
         />
         <Link href="/">
           <Image
-            alt="zmeu hausbesorger logo"
-            src="/images/logo-black.svg"
+            alt="zmeu hasbesorger logo"
+            src="/images/logo.png"
             width={200}
-            height={30}
+            height={100}
           />
         </Link>
         <Group className={classes.contactLinks}>
