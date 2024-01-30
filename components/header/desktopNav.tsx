@@ -13,14 +13,14 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
-import { MENU_ITEMS } from "@/types/navItem";
+import { MENU_ITEMS } from "@/config/menuItems";
 import { Pages } from "@/types/pages";
 import Link from "next/link";
 import { forwardRef } from "react";
 
 export const DesktopNav = () => {
   return (
-    <div className="hidden md:flex justify-between mb-[120px] mt-6">
+    <div className="hidden md:flex justify-between mb-[120px] mt-6 px-5">
       <Link href={Pages.home()}>
         <Logo />
       </Link>

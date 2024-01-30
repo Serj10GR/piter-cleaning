@@ -10,7 +10,7 @@ import { Button } from "../ui/button";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 import { BurgerIcon } from "@/app/icons/burger";
 import { Logo } from "../logo";
-import { MENU_ITEMS } from "@/types/navItem";
+import { MENU_ITEMS } from "@/config/menuItems";
 
 export function MobileNav() {
   const [open, setOpen] = React.useState(false);
