@@ -13,24 +13,10 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
+import { MENU_ITEMS } from "@/types/navItem";
 import { Pages } from "@/types/pages";
 import Link from "next/link";
 import { forwardRef } from "react";
-
-const components: { title: string; href: string }[] = [
-  {
-    title: "Alert Dialog",
-    href: "/docs/primitives/alert-dialog",
-  },
-  {
-    title: "Hover Card",
-    href: "/docs/primitives/hover-card",
-  },
-  {
-    title: "Progress",
-    href: "/docs/primitives/progress",
-  },
-];
 
 export const DesktopNav = () => {
   return (
@@ -41,34 +27,36 @@ export const DesktopNav = () => {
       <div className="flex">
         <NavigationMenu>
           <NavigationMenuList>
-            <NavigationMenuItem>
-              <NavigationMenuTrigger>Dienstleistungen</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="p-4 rounded-sm">
-                  {components.map((component) => (
-                    <ListItem
-                      key={component.title}
-                      title={component.title}
-                      href={component.href}
-                    />
-                  ))}
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/#about-us-section" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Über uns
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/#feedback" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Rezensionen
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
+            {MENU_ITEMS.map((item) => (
+              <NavigationMenuItem key={item.title}>
+                {item.items?.length ? (
+                  <>
+                    <NavigationMenuTrigger>
+                      Dienstleistungen
+                    </NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      <ul className="p-4 rounded-sm">
+                        {item.items.map((component) => (
+                          <ListItem
+                            key={component.title}
+                            title={component.title}
+                            href={component.href}
+                          />
+                        ))}
+                      </ul>
+                    </NavigationMenuContent>
+                  </>
+                ) : (
+                  <Link href={item.href} legacyBehavior passHref>
+                    <NavigationMenuLink
+                      className={navigationMenuTriggerStyle()}
+                    >
+                      {item.title}
+                    </NavigationMenuLink>
+                  </Link>
+                )}
+              </NavigationMenuItem>
+            ))}
           </NavigationMenuList>
         </NavigationMenu>
         <Button asChild variant="secondary">

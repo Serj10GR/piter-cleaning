@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Lato } from "next/font/google";
 import "./globals.css";
-import { MobileNav } from "@/components/navbar/mobile";
-import { DesktopNav } from "@/components/navbar/desktop";
+import { Header } from "@/components/header";
 
 const lato = Lato({
   subsets: ["latin"],
@@ -24,8 +23,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={lato.className}>
         <div className="max-w-[1280px] mx-auto">
-          <MobileNav />
-          <DesktopNav />
+          {/* <MobileNav />
+          <DesktopNav /> */}
+          <Header />
         </div>
         <main className="max-w-[1280px] mx-auto">{children}</main>
       </body>
