@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -11,9 +10,10 @@ import { ScrollArea } from "@radix-ui/react-scroll-area";
 import { BurgerIcon } from "@/app/icons/burger";
 import { Logo } from "../logo";
 import { MENU_ITEMS } from "@/config/menuItems";
+import { Fragment, useState } from "react";
 
 export function MobileNav() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -34,7 +34,7 @@ export function MobileNav() {
           <div className="flex flex-col space-y-4">
             {MENU_ITEMS.map((item) =>
               item.items ? (
-                <>
+                <Fragment key={item.href}>
                   {item.items?.map((item) => (
                     <MobileLink
                       key={item.href}
@@ -44,7 +44,7 @@ export function MobileNav() {
                       {item.title}
                     </MobileLink>
                   ))}
-                </>
+                </Fragment>
               ) : (
                 <MobileLink
                   key={item.href}
