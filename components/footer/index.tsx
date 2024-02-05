@@ -9,8 +9,8 @@ export const Footer = () => {
     MENU_ITEMS.find((item) => item.title === "Dienstleistungen")?.items ?? [];
   return (
     <footer className="bg-secondary text-white py-10 px-5">
-      <div className="flex flex-col md:flex-row-reverse md:items-center md:justify-between lg:max-w-[1280px] lg:mx-auto md:px-5">
-        <div className="grid grid-cols-2 gap-3 mb-20 md:mb-0 md:pr-40">
+      <div className="flex flex-col md:flex-row-reverse md:items-center lg:max-w-[1280px] lg:mx-auto md:px-5 md:gap-[200px]">
+        <div className="grid grid-cols-2 gap-3 mb-20 md:mb-0">
           <div>
             <div className="text-lg">Dienstleistungen</div>
             <div className="flex flex-col space-y-2 mt-4">

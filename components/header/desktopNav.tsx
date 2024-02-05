@@ -76,7 +76,7 @@ const ListItem = forwardRef<
 >(({ className, title, children, ...props }, ref) => {
   return (
     <li>
-      <Link href="/docs" legacyBehavior passHref>
+      <Link href={props.href ?? "/"} legacyBehavior passHref>
         <NavigationMenuLink className={navigationMenuTriggerStyle()}>
           <a
             ref={ref}

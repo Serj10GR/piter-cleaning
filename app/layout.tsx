@@ -22,11 +22,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={lato.className}>
+      <body className={`lato.className`}>
         <div className="max-w-[1280px] mx-auto">
           <Header />
         </div>
-        <main className="max-w-[1280px] mx-auto">{children}</main>
+        <main className="max-w-[1280px] mx-auto min-h-[calc(100vh-433px)]">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
