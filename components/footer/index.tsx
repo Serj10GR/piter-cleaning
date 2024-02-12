@@ -29,7 +29,7 @@ export const Footer = () => {
             <div className="text-lg">Kontaktiere uns</div>
             <div className="flex flex-col space-y-2 mt-4">
               <a
-                href={`call:${siteConfig.tel.value}`}
+                href={`tel:${siteConfig.tel.value}`}
                 className="text-sm text-white/60 cursor-pointer hover:text-white"
               >
                 {siteConfig.tel.label}
