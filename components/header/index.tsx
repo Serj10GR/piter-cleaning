@@ -8,7 +8,7 @@ import { Logo } from "../logo";
 
 export const Header = () => {
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 md:border-none bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <DesktopNav />
       <div className="md:hidden">
         <Link href={Pages.home()} className="py-[25px] flex justify-center">

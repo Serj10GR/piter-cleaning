@@ -1,6 +1,6 @@
 export class Pages {
   static contact(): string {
-    return "/kontakt";
+    return "/kontakt/";
   }
 
   static home(): string {
