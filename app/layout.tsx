@@ -3,6 +3,7 @@ import { Lato } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 const lato = Lato({
   subsets: ["latin"],
@@ -12,7 +13,21 @@ const lato = Lato({
 
 export const metadata: Metadata = {
   title: "Zmeu Hausbesorger",
-  description: "Hausbersorger Graz, hausbersoger Viena",
+  description:
+    "Professionelle Hausbesorger in Graz und Wien für umfassende Haushaltsdienstleistungen. Vertrauen Sie auf unsere Erfahrung in der Reinigung, Organisation und Pflege Ihres Zuhauses.",
+  keywords: [
+    "Hausbesorger",
+    "Büroreinigung",
+    "Hausbesorger Graz",
+    "Hausbesorger Wien",
+    "Hausreinigung",
+    "Reinigungsservice",
+    "Wände Malen",
+  ],
+  robots: {
+    follow: true,
+    index: true,
+  },
 };
 
 export default function RootLayout({
@@ -22,7 +37,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`lato.className`}>
+      <body className={`${lato.className}`}>
+        <GoogleTagManager gtmId="G-9S2MVSGW4W" />
         <div className="max-w-[1280px] mx-auto">
           <Header />
         </div>

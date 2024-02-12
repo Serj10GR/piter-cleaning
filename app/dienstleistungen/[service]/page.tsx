@@ -15,7 +15,7 @@ export default function Page({ params }: { params: { service: string } }) {
       <div className="grid grid-cols-1 md:grid-cols-2">
         <RoundImage src="/service_1.jpg" isPlp />
         <div>
-          <h2 className="text-[32px] mb-10">{service?.name}</h2>
+          <h1 className="text-[32px] mb-10">{service?.name}</h1>
           <p className="mb-5">
             Möchten Sie weitere Informationen zu diesem Service?
           </p>
