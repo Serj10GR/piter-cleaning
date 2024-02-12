@@ -8,7 +8,7 @@ type RoundImageProps = {
 
 export const RoundImage = ({
   isPlp,
-  src = "/hero_img.jpeg",
+  src = "/hero_img.jpg",
 }: RoundImageProps) => {
   return (
     <div className="relative mx-auto">
