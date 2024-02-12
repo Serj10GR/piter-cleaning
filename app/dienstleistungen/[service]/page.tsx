@@ -11,11 +11,11 @@ export default function Page({ params }: { params: { service: string } }) {
 
   const service = SERVICES.find((s) => s.link === serviceLinkParam);
   return (
-    <div>
-      <div className="grid grid-cols-1 md:grid-cols-2">
+    <div className="px-5 md:px-0">
+      <div className="grid grid-cols-1 md:grid-cols-2 py-10 md:py-0">
         <RoundImage src="/service_1.jpg" isPlp />
-        <div>
-          <h1 className="text-[32px] mb-10">{service?.name}</h1>
+        <div className="text-center md:text-left">
+          <h1 className="text-[32px] my-10 md:mt-0">{service?.name}</h1>
           <p className="mb-5">
             Möchten Sie weitere Informationen zu diesem Service?
           </p>
@@ -24,7 +24,7 @@ export default function Page({ params }: { params: { service: string } }) {
           </Button>
         </div>
       </div>
-      <section className="my-20 px-[200px]">
+      <section className="my-10 md:my-20 px-5 md:px-[200px]">
         {service?.included.map((item) => {
           if (item.subItems) {
             return (
