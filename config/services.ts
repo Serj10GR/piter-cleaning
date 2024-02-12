@@ -3,7 +3,7 @@ import { Service } from "@/types/service";
 export const SERVICES: Array<Service> = [
   {
     id: 1,
-    name: "REINIGUNG UND PLEGE VON INNEN UND AUßENBEREICHEN",
+    name: "REINIGUNG UND PFLEGE VON INNEN UND AUßENBEREICHEN",
     link: "reinigung-und-plege-von-innen-und-außenbereichen",
     included: [
       {
