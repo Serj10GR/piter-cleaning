@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { GoogleTagManager } from "@next/third-parties/google";
+import { LDSchemaScript } from "@/components/ldSchemaScript";
 
 const lato = Lato({
   subsets: ["latin"],
@@ -36,9 +37,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="de">
       <body className={`${lato.className}`}>
         <GoogleTagManager gtmId="G-9S2MVSGW4W" />
+        <LDSchemaScript />
         <div className="max-w-[1280px] mx-auto">
           <Header />
         </div>
